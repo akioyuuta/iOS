@@ -21,10 +21,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var m_text_view: UITextView!
     
+    @IBOutlet weak var m_slider: UISlider!
+    
+    @IBOutlet weak var mscore: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sliderChanged(m_slider)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +55,11 @@ class ViewController: UIViewController {
         self.show(alertVC, sender: nil)
         m_text_view.text = "\(m_text_view.text!)  \(m_username.text!)"
     }
-
+    
+    @IBAction func sliderChanged(_ sender: Any) {
+        var val:Float = (sender as! UISlider).value
+        val *= 100
+        mscore.text = String(val)
+    }
 }
 
